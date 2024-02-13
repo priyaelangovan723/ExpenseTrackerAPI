@@ -1,9 +1,11 @@
 const express =require('express')
+const cors =require('cors')
 const {connectToDb, getDb} = require('./dbconnection.cjs')
 const { MongoDBCollectionNamespace, ObjectId } = require('mongodb')
 const bodyparser = require('body-parser')
 const app = express()
 app.use(bodyparser.json())
+app.use(cors())
 connectToDb(function(error){
     if(error){
         console.log('Could not establish connection')
